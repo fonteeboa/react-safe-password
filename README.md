@@ -1,5 +1,16 @@
 # react-safe-password
 
+[![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+[![Quality Gate overall Status](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_react-safe-password&metric=alert_status)](https://sonarcloud.io/summary/overall?id=fonteeboa_react-safe-password)
+[![Quality Gate overall Status](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_react-safe-password&metric=security_rating)](https://sonarcloud.io/summary/overall?id=fonteeboa_react-safe-password)
+[![Quality Gate overall Status](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_react-safe-password&metric=vulnerabilities)](https://sonarcloud.io/summary/overall?id=fonteeboa_react-safe-password)
+[![Quality Gate overall Status](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_react-safe-password&metric=sqale_index)](https://sonarcloud.io/summary/overall?id=fonteeboa_react-safe-password)
+[![Quality Gate overall Status](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_react-safe-password&metric=reliability_rating)](https://sonarcloud.io/summary/overall?id=fonteeboa_react-safe-password)
+[![Quality Gate overall Status](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_react-safe-password&metric=duplicated_lines_density)](https://sonarcloud.io/summary/overall?id=fonteeboa_react-safe-password)
+[![Quality Gate overall Status](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_react-safe-password&metric=code_smells)](https://sonarcloud.io/summary/overall?id=fonteeboa_react-safe-password)
+[![Quality Gate overall Status](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_react-safe-password&metric=sqale_rating)](https://sonarcloud.io/summary/overall?id=fonteeboa_react-safe-password)
+[![Quality Gate overall Status](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_react-safe-password&metric=coverage)](https://sonarcloud.io/summary/overall?id=fonteeboa_react-safe-password)
+
 ## Descrição
 
 **react-safe-password** é um projeto React que permite aos usuários gerar senhas seguras e aleatórias. Além de gerar senhas completamente aleatórias, o projeto oferece a opção de incluir uma palavra personalizada fornecida pelo usuário na senha gerada. Isso proporciona uma camada adicional de personalização e memorabilidade sem comprometer a segurança.
