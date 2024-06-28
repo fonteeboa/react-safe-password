@@ -1,0 +1,158 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0d0d2b; /* Fundo mais escuro */
+  color: #00d4ff; /* Cor de texto azul claro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  background-image: url('../images/bg-open-lock.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.lock-card {
+  background: linear-gradient(135deg, #005f72, #12122bf3, #12122bf3, #005f72);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); /* Sombra azul claro */
+  width: 350px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #242463; /* Borda azul escura */
+}
+
+.lock-icon {
+  padding: 10px;
+}
+
+.lock-card h2 {
+  color: #00d4ff;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #00d4ff;
+  background-color: #242463; /* Fundo do campo de entrada */
+  color: #00d4ff;
+}
+
+.switches {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.switch-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+  color: #00d4ff;
+}
+
+.switch {
+  margin-left: 10px;
+}
+
+.password-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.password-field {
+  width: 100%;
+  padding: 10px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #00d4ff;
+  background-color: #242463;
+  color: #ffffff;
+}
+
+.copy-btn, .generate-btn {
+  background-color: #024873;
+  width: 100%;
+  height: 50px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.padding {
+  padding-top: 2vh;
+}
+
+.copy-btn:hover, .generate-btn:hover {
+  background-color: #009ecc;
+}
+
+.ant-switch.ant-switch-checked .ant-switch-inner {
+  background-color: #024873;
+}
+
+.ant-input::-webkit-input-placeholder {
+  color: #ffffff !important;  
+}
+
+/* Firefox 18- */
+.ant-input:-moz-placeholder {
+  color: #ffffff !important;  
+}
+
+/* Firefox 19+ */
+.ant-input::-moz-placeholder {
+  color: #ffffff !important;  
+}
+
+.ant-input:-ms-input-placeholder {  
+  color: #ffffff !important;  
+}
+
+.ant-input-disabled::-webkit-input-placeholder {
+  color: #ffffff !important;  
+}
+
+/* Firefox 18- */
+.ant-input-disabled:-moz-placeholder {
+  color: #ffffff !important;  
+}
+
+/* Firefox 19+ */
+.ant-input-disabled::-moz-placeholder {
+  color: #ffffff !important;  
+}
+
+.ant-input-disabled:-ms-input-placeholder {  
+  color: #ffffff !important;  
+}
+
+.ant-input-disabled, .ant-input {
+  background-color: #0A7ABF !important;
+}
