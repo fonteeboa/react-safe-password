@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Input, Button, message } from 'antd';
+import { Switch, Input, Button, message, Tooltip } from 'antd';
 import { LockOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import { setLanguage, detectLanguage } from '../services/languageService';
@@ -9,7 +9,7 @@ import '../i18n';
 const App: React.FC = () => {
   const { t } = useTranslation();
   const [password, setPassword] = useState<string>('');
-  const [length] = useState<number>(16);
+  const [length, setLength] = useState<number>(16);
   const [includeUppercase, setIncludeUppercase] = useState<boolean>(true);
   const [includeLowercase, setIncludeLowercase] = useState<boolean>(true);
   const [includeNumbers, setIncludeNumbers] = useState<boolean>(true);
@@ -22,47 +22,58 @@ const App: React.FC = () => {
   }, []);
 
   const switchConfigs: SwitchConfig[] = [
-    { label: t('Include Uppercase'), state: includeUppercase, setState: setIncludeUppercase },
-    { label: t('Include Lowercase'), state: includeLowercase, setState: setIncludeLowercase },
-    { label: t('Include Numbers'), state: includeNumbers, setState: setIncludeNumbers },
-    { label: t('Include Symbols'), state: includeSymbols, setState: setIncludeSymbols }
+    { label: t('include.uppercase'), state: includeUppercase, setState: setIncludeUppercase },
+    { label: t('include.lowercase'), state: includeLowercase, setState: setIncludeLowercase },
+    { label: t('include.numbers'), state: includeNumbers, setState: setIncludeNumbers },
+    { label: t('include.symbols'), state: includeSymbols, setState: setIncludeSymbols }
   ];
 
   const generatePassword = () => {
+    let adjustedLength = length;
+    let adjustedUserWord = userWord.trim();
+
+    if (adjustedLength < 12 || adjustedLength > 32) {
+      adjustedLength = Math.floor(Math.random() * (32 - 12 + 1)) + 12;
+      message.info(t('invalid.length.value'));
+      setLength(adjustedLength);
+    }
+
+    if (adjustedUserWord.length > adjustedLength || adjustedUserWord.length === adjustedLength) {
+      message.info(t('security.message'));
+      adjustedUserWord = adjustedUserWord.slice(0, -5)
+    }
+
     const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
     const numberChars = "0123456789";
     const symbolChars = "!@#$%^&*()_+~`|}{[]:;?><,./-=";
     let charset = '';
-    if (includeUppercase) charset += uppercaseChars;
-    if (includeLowercase) charset += lowercaseChars;
-    if (includeNumbers) charset += numberChars;
-    if (includeSymbols) charset += symbolChars;
+    includeUppercase && (charset += uppercaseChars);
+    includeLowercase && (charset += lowercaseChars);
+    includeNumbers && (charset += numberChars);
+    includeSymbols && (charset += symbolChars);
 
     if (charset === '') {
-      message.error(t('Please select at least one character option.'));
+      message.error(t('select.character.option'));
       return;
     }
 
-    let newPassword = userWord;
-    while (newPassword.length < length) {
+    while (adjustedUserWord.length < adjustedLength) {
       const randomIndex = Math.floor(Math.random() * charset.length);
       const newChar = charset[randomIndex];
-      // Evitar padrões previsíveis
-      if (!/([a-zA-Z0-9!@#$%^&*()_+~`|}{[\]:;?><,./-])\1\1/.test(newPassword + newChar)) {
-        newPassword += newChar;
+      if (!/([a-zA-Z0-9!@#$%^&*()_+~`|}{[\]:;?><,./-])\1\1/.test(adjustedUserWord + newChar)) {
+        adjustedUserWord += newChar;
       }
     }
 
-    // Embaralhar a senha para melhor segurança
-    newPassword = newPassword.split('').sort(() => 0.5 - Math.random()).join('');
+    adjustedUserWord = adjustedUserWord.split('').sort(() => 0.5 - Math.random()).join('');
 
-    setPassword(newPassword);
+    setPassword(adjustedUserWord);
   };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(password);
-    message.success(t('Password copied to clipboard!'));
+    message.success(t('password.copied'));
   };
 
   return (
@@ -71,13 +82,26 @@ const App: React.FC = () => {
         <div className="lock-icon">
           <LockOutlined style={{ fontSize: '48px', color: '#00d4ff' }} />
         </div>
-        <h2>{t('Secure Password Generator')}</h2>
-        <Input
-          placeholder={t('Optional word')}
-          className="input-field"
-          value={userWord}
-          onChange={(e) => setUserWord(e.target.value)}
-        />
+        <h2>{t('secure.password.generator')}</h2>
+        <div className="input-div">
+          <Input
+            placeholder={t('optional.word')}
+            className="input-field"
+            value={userWord}
+            onChange={(e) => setUserWord(e.target.value.trim())}
+          />
+          <Tooltip title={t('tooltip.password.length')}>
+            <Input
+              type="number"
+              min={12}
+              max={32}
+              value={length}
+              onChange={(e) => setLength(Number(e.target.value))}
+              placeholder={t('password.length')}
+              className="length-input"
+            />
+          </Tooltip>
+        </div>
         <div className="switches">
           {switchConfigs.map((config, index) => (
             <label key={index} className="switch-label">
@@ -91,19 +115,19 @@ const App: React.FC = () => {
           ))}
         </div>
         <div className=''>
-          <Button onClick={generatePassword} className="generate-btn">{t('Generate Password')}</Button>
+          <Button onClick={generatePassword} className="generate-btn">{t('generate.password')}</Button>
         </div>
 
         <div className="padding">
           <Input
             value={password}
-            placeholder={t('Generated Password')}
+            placeholder={t('generated.password')}
             readOnly
             className="password-field"
           />
         </div>
         <div className="padding">
-          <Button onClick={copyToClipboard} className="copy-btn">{t('Copy Password')}</Button>
+          <Button onClick={copyToClipboard} className="copy-btn">{t('copy.password')}</Button>
         </div>
       </div>
     </div>
