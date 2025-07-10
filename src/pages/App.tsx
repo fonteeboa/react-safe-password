@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Input, Button, message, Tooltip } from 'antd';
-import { LockOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import { setLanguage, detectLanguage } from '../services/languageService';
 import { SwitchConfig } from '../domain';
+import logo from "../assets/images/logo_brand.png";
 import '../i18n';
 
 const App: React.FC = () => {
@@ -80,7 +80,7 @@ const App: React.FC = () => {
     <div className="App">
       <div className="lock-card">
         <div className="lock-icon">
-          <LockOutlined style={{ fontSize: '48px', color: '#00d4ff' }} />
+          <img src={logo} alt="Sonar Exporter Logo" />
         </div>
         <h2>{t('secure.password.generator')}</h2>
         <div className="input-div">
@@ -104,7 +104,7 @@ const App: React.FC = () => {
         </div>
         <div className="switches">
           {switchConfigs.map((config, index) => (
-            <label key={index} className="switch-label">
+            <label key={index + config.label} className="switch-label">
               <span>{config.label}</span>
               <Switch
                 checked={config.state}
