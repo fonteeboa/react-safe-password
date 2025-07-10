@@ -339,7 +339,7 @@ body::before {
   background-color: rgba(68, 75, 68, 0.6) !important;
   border-color: rgba(8, 156, 59, 0.3) !important;
 }
-.lock-card::before {
+.lock-card:hover::before {
   content: "";
   position: absolute;
   top: -50%;
