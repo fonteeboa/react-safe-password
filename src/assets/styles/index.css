@@ -288,6 +288,7 @@ body::before {
 
 /* Estilização dos switches do Ant Design */
 .ant-switch {
+  top: 1px !important;
   background-color: var(--clr-surface-a20) !important;
   border: 1px solid rgba(8, 156, 59, 0.3) !important;
 }
