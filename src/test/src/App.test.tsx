@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from '../../pages/App';
-import { useTranslation } from 'react-i18next';
 import { message } from 'antd';
 
 jest.mock('antd', () => ({
