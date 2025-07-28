@@ -93,7 +93,7 @@ body::before {
 }
 
 .lock-card {
-  background: linear-gradient(145deg, rgba(45, 53, 46, 0.9), rgba(20, 32, 25, 0.95));
+  background-color: #142019 !important;
   backdrop-filter: blur(20px);
   padding: 2cqi;
   border-radius: 24px;
