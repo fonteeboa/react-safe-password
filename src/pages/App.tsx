@@ -80,7 +80,7 @@ const App: React.FC = () => {
     <div className="App">
       <div className="lock-card">
         <div className="lock-icon">
-          <img src={logo} alt="Sonar Exporter Logo" />
+          <img src={logo} alt="Fonteeboa Logo" />
         </div>
         <h2>{t('secure.password.generator')}</h2>
         <div className="input-div">
