@@ -54,9 +54,6 @@ body::before {
   left: 0;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at 20% 80%, rgba(8, 156, 59, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(8, 156, 59, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(8, 156, 59, 0.05) 0%, transparent 50%);
   pointer-events: none;
   z-index: -1;
 }
@@ -358,8 +355,10 @@ body::before {
 /* Responsividade aprimorada */
 @media (max-width: 768px) {
   .lock-card {
-    width: 350px;
     padding: 30px 25px;
+    width: 100%;
+    max-width: 768px;
+    border-radius: 0%;
   }
 
   .lock-card h2 {
@@ -378,7 +377,9 @@ body::before {
 
 @media (max-width: 480px) {
   .lock-card {
-    width: 320px;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 0%;
     padding: 25px 20px;
   }
 
